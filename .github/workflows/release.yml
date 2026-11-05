@@ -1,0 +1,97 @@
+name: Release
+
+# Push a tag like v1.0.0 to build everything and publish a GitHub Release with downloadable files.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to release (must already exist)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  mac:
+    name: Mac app
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+      - name: Test
+        run: swift test
+        working-directory: app
+      - name: Build, sign and zip
+        working-directory: app
+        env:
+          TABTUNNEL_P12: ${{ secrets.TABTUNNEL_P12 }}
+          TABTUNNEL_P12_PASSWORD: ${{ secrets.TABTUNNEL_P12_PASSWORD }}
+        run: scripts/release.sh "$RUNNER_TEMP/TabTunnel-macOS.zip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mac
+          path: ${{ runner.temp }}/TabTunnel-macOS.zip
+
+  extension:
+    name: Browser extension
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webext
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: webext/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - name: Collect files
+        run: |
+          mkdir -p "$RUNNER_TEMP/out"
+          cp dist/icloud-tabs-relay-chromium.zip "$RUNNER_TEMP/out/TabTunnel-extension-chromium.zip"
+          cp dist/icloud-tabs-relay-firefox.zip "$RUNNER_TEMP/out/TabTunnel-extension-firefox-unsigned.zip"
+      # Optional: with Mozilla add-on API credentials in the repo secrets, also publish a signed .xpi for Zen/Firefox.
+      - name: Sign for Zen/Firefox (if AMO credentials are set)
+        env:
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: |
+          if [[ -z "$AMO_JWT_ISSUER" || -z "$AMO_JWT_SECRET" ]]; then
+            echo "No AMO credentials; skipping the signed .xpi."
+            exit 0
+          fi
+          npx --yes web-ext sign -s dist/firefox --channel unlisted \
+            --api-key "$AMO_JWT_ISSUER" --api-secret "$AMO_JWT_SECRET" -a "$RUNNER_TEMP/xpi"
+          cp "$RUNNER_TEMP"/xpi/*.xpi "$RUNNER_TEMP/out/TabTunnel-extension-zen-firefox.xpi"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extension
+          path: ${{ runner.temp }}/out/*
+
+  release:
+    name: Publish release
+    needs: [mac, extension]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: files
+          merge-multiple: true
+      - name: Create or update the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          ls -la files
+          if gh release view "$TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" files/* --clobber -R "$GITHUB_REPOSITORY"
+          else
+            gh release create "$TAG" files/* -R "$GITHUB_REPOSITORY" --title "TabTunnel $TAG" --generate-notes
+          fi

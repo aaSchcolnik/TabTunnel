@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  app:
+    name: Mac app (swift test)
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test
+        working-directory: app
+
+  extension:
+    name: Extension (build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webext
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: webext/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - run: node --experimental-strip-types scripts/test-icons.ts

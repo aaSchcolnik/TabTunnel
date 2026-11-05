@@ -1,0 +1,17 @@
+# dependencies and build output (npm install / npm run build recreate them)
+node_modules/
+webext/build/
+webext/dist/
+*.tsbuildinfo
+.DS_Store
+
+# screenshots of the owner's real tabs: keep local, never commit
+review/live/
+review/**/*live*
+
+# design/security review working files (briefs, notes, screenshots): kept local
+review/
+
+# SQLite side files
+*.db-shm
+*.db-wal

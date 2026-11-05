@@ -1,0 +1,268 @@
+{
+  "devices" : [
+    {
+      "kind" : "phone",
+      "lastModified" : "2026-11-05T14:44:44.479Z",
+      "name" : "Alex’s iPhone",
+      "tabs" : [
+        {
+          "title" : "Hacker News",
+          "url" : "https://news.ycombinator.com/"
+        },
+        {
+          "title" : "MagicDNS · Tailscale Docs",
+          "url" : "https://tailscale.com/kb/1081/magicdns"
+        },
+        {
+          "title" : "GitHub - zen-browser/desktop: Welcome to a calmer internet",
+          "url" : "https://github.com/zen-browser/desktop"
+        },
+        {
+          "title" : "Wikipedia, la enciclopedia libre",
+          "url" : "https://es.wikipedia.org/wiki/Wikipedia:Portada"
+        },
+        {
+          "title" : "YouTube",
+          "url" : "https://m.youtube.com/"
+        }
+      ]
+    },
+    {
+      "kind" : "tablet",
+      "lastModified" : "2026-11-03T15:14:44.479Z",
+      "name" : "Alex’s iPad Pro",
+      "tabs" : [
+        {
+          "title" : "Figma",
+          "url" : "https://www.figma.com/"
+        },
+        {
+          "title" : "MDN Web Docs",
+          "url" : "https://developer.mozilla.org/en-US/"
+        }
+      ]
+    }
+  ],
+  "sourceModifiedAt" : "2026-11-05T15:14:44.000Z",
+  "tabGroups" : [
+    {
+      "id" : "G10",
+      "tabs" : [
+        {
+          "id" : "T1001",
+          "pinned" : true,
+          "title" : "Dribbble - Discover the World’s Top Designers & Creative Professionals",
+          "url" : "https://dribbble.com/"
+        },
+        {
+          "id" : "T1002",
+          "title" : "Mobbin — UI & UX design inspiration",
+          "url" : "https://mobbin.com/"
+        },
+        {
+          "id" : "T1003",
+          "title" : "Refactoring UI",
+          "url" : "https://www.refactoringui.com/"
+        },
+        {
+          "id" : "T1004",
+          "title" : "Coolors - The super fast color palettes generator!",
+          "url" : "https://coolors.co/"
+        },
+        {
+          "id" : "T1005",
+          "title" : "Figma: The Collaborative Interface Design Tool",
+          "url" : "https://www.figma.com/"
+        }
+      ],
+      "title" : "Design"
+    },
+    {
+      "id" : "G20",
+      "tabs" : [
+        {
+          "id" : "T1006",
+          "title" : "T3 Chat",
+          "url" : "https://t3.chat/"
+        },
+        {
+          "id" : "T1007",
+          "title" : "Origami Studio — Origami Studio 3",
+          "url" : "https://origami.design/"
+        },
+        {
+          "id" : "T1008",
+          "title" : "The <model> element",
+          "url" : "https://immersive-web.github.io/model-element/"
+        }
+      ],
+      "title" : "T3 Code"
+    },
+    {
+      "id" : "G30",
+      "tabs" : [
+        {
+          "id" : "T1009",
+          "title" : "Tailwind CSS - Rapidly build modern websites without ever leaving your HTML",
+          "url" : "https://tailwindcss.com/"
+        },
+        {
+          "id" : "T1010",
+          "title" : "CSS-Tricks",
+          "url" : "https://css-tricks.com/"
+        },
+        {
+          "id" : "T1011",
+          "title" : "Josh W. Comeau",
+          "url" : "https://www.joshwcomeau.com/"
+        }
+      ],
+      "title" : "CSS Styles"
+    },
+    {
+      "id" : "G40",
+      "tabs" : [
+        {
+          "id" : "T1012",
+          "title" : "Nike. Just Do It. Nike.com",
+          "url" : "https://www.nike.com/"
+        },
+        {
+          "id" : "T1013",
+          "title" : "New Balance",
+          "url" : "https://www.newbalance.com/"
+        },
+        {
+          "id" : "T1014",
+          "title" : "adidas Official Website",
+          "url" : "https://www.adidas.com/us"
+        },
+        {
+          "id" : "T1015",
+          "title" : "END. Clothing",
+          "url" : "https://www.endclothing.com/"
+        }
+      ],
+      "title" : "Sneakers"
+    },
+    {
+      "id" : "G50",
+      "tabs" : [
+        {
+          "id" : "T1016",
+          "title" : "Zara México",
+          "url" : "https://www.zara.com/mx/"
+        },
+        {
+          "id" : "T1017",
+          "title" : "UNIQLO",
+          "url" : "https://www.uniqlo.com/"
+        }
+      ],
+      "title" : "Ropa en mexico"
+    },
+    {
+      "id" : "G60",
+      "tabs" : [
+        {
+          "id" : "T1018",
+          "title" : "ESP32 Wi-Fi & Bluetooth SoC | Espressif Systems",
+          "url" : "https://www.espressif.com/en/products/socs/esp32"
+        },
+        {
+          "id" : "T1019",
+          "title" : "Random Nerd Tutorials",
+          "url" : "https://randomnerdtutorials.com/"
+        }
+      ],
+      "title" : "ESP32"
+    },
+    {
+      "id" : "G70",
+      "tabs" : [
+        {
+          "id" : "T1020",
+          "title" : "Raspberry Pi",
+          "url" : "https://www.raspberrypi.com/"
+        },
+        {
+          "id" : "T1021",
+          "title" : "awesome-selfhosted",
+          "url" : "https://awesome-selfhosted.net/"
+        }
+      ],
+      "title" : "Raspberry Pi / Self Hosting"
+    },
+    {
+      "id" : "G80",
+      "tabs" : [
+        {
+          "id" : "T1022",
+          "title" : "The Odin Project",
+          "url" : "https://www.theodinproject.com/"
+        },
+        {
+          "id" : "T1023",
+          "title" : "freeCodeCamp",
+          "url" : "https://www.freecodecamp.org/"
+        }
+      ],
+      "title" : "Learn Programming"
+    },
+    {
+      "id" : "G90",
+      "tabs" : [
+        {
+          "id" : "T1024",
+          "title" : "Goulet Pens",
+          "url" : "https://www.gouletpens.com/"
+        },
+        {
+          "id" : "T1025",
+          "title" : "JetPens",
+          "url" : "https://www.jetpens.com/"
+        }
+      ],
+      "title" : "Tinta Y Plumas"
+    },
+    {
+      "id" : "G100",
+      "tabs" : [
+        {
+          "id" : "T1026",
+          "title" : "Linear – Plan and build products",
+          "url" : "https://linear.app/"
+        }
+      ],
+      "title" : "Tasky"
+    },
+    {
+      "id" : "G110",
+      "tabs" : [
+        {
+          "id" : "T1027",
+          "title" : "Raycast",
+          "url" : "https://www.raycast.com/"
+        },
+        {
+          "id" : "T1028",
+          "title" : "Things 3",
+          "url" : "https://culturedcode.com/things/"
+        }
+      ],
+      "title" : "Apps"
+    },
+    {
+      "id" : "G120",
+      "tabs" : [
+        {
+          "id" : "T1029",
+          "title" : "Releases · zen-browser/desktop",
+          "url" : "https://github.com/zen-browser/desktop/releases"
+        }
+      ],
+      "title" : "Downloads"
+    }
+  ],
+  "updatedAt" : "2026-11-05T17:41:13.287Z"
+}
