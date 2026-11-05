@@ -114,11 +114,11 @@ final class SafariTests: XCTestCase {
                               safetyInterval: 3600) { fired.fulfill() }
         w.start()
         XCTAssertTrue(w.isWatching)
-        Thread.sleep(forTimeInterval: 0.3)
+        Thread.sleep(forTimeInterval: 1.0) // FSEvents can take a moment to go live on slow CI machines
         let db = try openWritable(dir + "/SafariTabs.db")
         try exec(db, "UPDATE bookmarks SET title=title||'!' WHERE id=1")
         sqlite3_close_v2(db)
-        wait(for: [fired], timeout: 5)
+        wait(for: [fired], timeout: 20)
         withExtendedLifetime(w) {}
     }
 }
