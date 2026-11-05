@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "iCloud Tabs Relay",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Shows the Safari tabs from your iPhone and Mac, served by the CloudTabs relay on your Mac.",
   "action": {
     "default_popup": "popup.html",
@@ -21,6 +21,9 @@
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   },
   "permissions": [
     "storage"
